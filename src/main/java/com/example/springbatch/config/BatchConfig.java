@@ -39,7 +39,6 @@ public class BatchConfig {
                 .get("readCSVFilesJob")
                 .incrementer(new RunIdIncrementer())
                 .start(step1())
-                .ne
                 .build();
     }
 
