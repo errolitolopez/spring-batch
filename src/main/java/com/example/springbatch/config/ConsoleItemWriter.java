@@ -15,6 +15,7 @@ public class ConsoleItemWriter<T> implements ItemWriter<T> {
         LOG.trace("Console item writer starts");
         for (T item : items) {
             System.out.println(item);
+//            LOG.info(ToStringBuilder.reflectionToString(item));
         }
 
         LOG.trace("Console item writer ends");

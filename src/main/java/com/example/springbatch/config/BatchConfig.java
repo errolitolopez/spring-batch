@@ -30,8 +30,8 @@ public class BatchConfig {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
-    @Value("input/inputData.csv")
-    private Resource inputResource;
+    @Value("classpath:input/inputData.csv")
+    Resource resourceFile;
 
     @Bean
     public Job readCSVFilesJob() {
@@ -39,6 +39,7 @@ public class BatchConfig {
                 .get("readCSVFilesJob")
                 .incrementer(new RunIdIncrementer())
                 .start(step1())
+                .ne
                 .build();
     }
 
@@ -63,7 +64,7 @@ public class BatchConfig {
         FlatFileItemReader<Employee> itemReader = new FlatFileItemReader<Employee>();
         itemReader.setLineMapper(lineMapper());
         itemReader.setLinesToSkip(1);
-        itemReader.setResource(inputResource);
+        itemReader.setResource(resourceFile);
         return itemReader;
     }
 
